@@ -117,6 +117,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">
+                                        模板
+                                    </label>
+                                    <select id="Template" name="Template" class="form-control">
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">
                                         备注
                                     </label>
                                     <input type="text" id="Mark" name="Mark" class="form-control"
@@ -170,7 +178,14 @@
         "Download": "asdasd.exe",
         "AccessCount": 0,
         "DownloadCount": 0,
-        "Mark": ""
+        "Mark": "",
+        "Template": ""
+    }
+    var templates = GetTemplate()
+    for (let key in templates) {
+        var t = templates[key];
+        console.log(t)
+        $('#Template').append(`<option value="${t}"> ${t} </option>`);
     }
 
     function load_node() {
@@ -180,7 +195,7 @@
             if (element == "") continue;
 
             body = body + "<tr>\n" +
-                "<td>" + element.Domain + "</td>\n" +
+                "<td>" + element.Domain + " - " + element.Title + "</td>\n" +
                 "<td>" + element.AccessCount + "</td>\n" +
                 "<td>" + element.DownloadCount + "</td>\n" +
                 "<td>" + element.Mark + "</td>\n" +
@@ -203,6 +218,7 @@
         $('#Title').val("");
         $('#Mark').val("");
         $('#File').val("");
+        $("#Template").val("")
         $('#modal-container-link').modal('hide')
         $('#modal-container-link').modal('show')
     }
@@ -218,6 +234,7 @@
         $('#Domain').val(element.Domain);
         $('#Title').val(element.Title);
         $('#Mark').val(element.Mark);
+        $("#Template").val(element.Template)
         $('#File').val("");
         $('#modal-container-link').modal('hide')
         $('#modal-container-link').modal('show')

@@ -5,6 +5,8 @@ import (
 	"LoginFish/pkg/model"
 	"github.com/gin-gonic/gin"
 	"log"
+	"path"
+	"path/filepath"
 	"strings"
 )
 
@@ -77,4 +79,12 @@ func (a *Api) GetLog(c *gin.Context) {
 		model.Conn.Model(&model.Log{}).Where("site_id = ? ", id).Order("id desc").Limit(200).Find(&logs)
 	}
 	c.JSON(200, &logs)
+}
+
+func (a *Api) GetTemplate(c *gin.Context) {
+	templates, _ := filepath.Glob("static/template/front_login*")
+	for i := range templates {
+		templates[i] = path.Base(templates[i])
+	}
+	c.JSON(200, templates)
 }

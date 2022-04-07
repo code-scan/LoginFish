@@ -15,6 +15,7 @@ type Site struct {
 	Download      string // 马下载地址
 	AccessCount   uint   // 访问次数
 	DownloadCount uint   // 马下载次数
+	Template      string // 模板
 	Mark          string // 备注
 }
 

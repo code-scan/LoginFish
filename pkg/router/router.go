@@ -31,5 +31,6 @@ func init() {
 	apiRouter.Any("/get_site", api.GetSite)
 	apiRouter.Any("/del_site", api.DelSite)
 	apiRouter.Any("/get_log", api.GetLog)
+	apiRouter.Any("/get_template", api.GetTemplate)
 
 }

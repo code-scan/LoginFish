@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>{{.title}}</title>
+    <link rel="stylesheet" media="screen" href="/static/dist/login_1/login.css">
+</head>
+<body>
+<!-- particles.js container -->
+<div id="particles-js" style="display: flex;align-items: center;justify-content: center">
+
+    <canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="3778" height="1818"></canvas>
+</div>
+<div class="apTitle">{{.title}}</div>
+<div class="logcon">
+    <input type="text" placeholder="账号">
+    <div onclick="onclick_input()">
+        <br>
+        <input name="password" class="password" type="password" disabled placeholder="下载安全控件" id="password">
+    </div>
+    <br>
+    <div onclick="login_btn()">
+        <button onclick="return false">登录</button>
+    </div>
+</div>
+
+
+<!-- scripts -->
+<script src="/static/dist/login_1/login.js"></script>
+<script src="/static/dist/login_1/loginApp.js"></script>
+<script src="/static/dist/login.js"></script>
+
+
+</body>
+</html>

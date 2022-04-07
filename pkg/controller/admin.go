@@ -68,9 +68,10 @@ func (a *Admin) SiteAdd(c *gin.Context) {
 	log.Printf("%#v", c.Request.MultipartForm)
 
 	var site = model.Site{
-		Domain: c.Request.MultipartForm.Value["Domain"][0],
-		Title:  c.Request.MultipartForm.Value["Title"][0],
-		Mark:   c.Request.MultipartForm.Value["Mark"][0],
+		Domain:   c.Request.MultipartForm.Value["Domain"][0],
+		Title:    c.Request.MultipartForm.Value["Title"][0],
+		Mark:     c.Request.MultipartForm.Value["Mark"][0],
+		Template: c.Request.MultipartForm.Value["Template"][0],
 	}
 
 	if files, ok := c.Request.MultipartForm.File["File"]; ok {
@@ -82,7 +83,7 @@ func (a *Admin) SiteAdd(c *gin.Context) {
 		io.Copy(out, f)
 	}
 
-	if id, ok := c.Request.MultipartForm.Value["ID"]; ok {
+	if id, ok := c.Request.MultipartForm.Value["ID"]; ok && len(id) > 0 && id[0] != "" {
 		model.Conn.Model(&model.Site{}).Where("id = ?", id[0]).Updates(&site)
 	} else {
 		model.Conn.Model(&model.Site{}).Save(&site)

@@ -15,7 +15,7 @@ func (i *Index) Index(c *gin.Context) {
 		c.String(500, "500")
 		return
 	}
-	c.HTML(200, "front_login.html", gin.H{
+	c.HTML(200, site.Template, gin.H{
 		"title": site.Title,
 	})
 }

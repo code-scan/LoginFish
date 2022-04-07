@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func testdata() {
@@ -41,9 +42,13 @@ func testdata() {
 }
 func main() {
 	//testdata()
+	port := "5522"
+	if len(os.Args) > 1 {
+		port = os.Args[1]
+	}
 	router.Router.LoadHTMLGlob("static/template/*.html")
 	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", 5522),
+		Addr:    fmt.Sprintf(":%s", port),
 		Handler: router.Router,
 	}
 	if err := srv.ListenAndServe(); err != nil {
