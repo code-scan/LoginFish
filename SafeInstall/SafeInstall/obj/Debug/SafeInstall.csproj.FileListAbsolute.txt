@@ -1,0 +1,8 @@
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\bin\Debug\SafeInstall.exe.config
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\bin\Debug\SafeInstall.exe
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\bin\Debug\SafeInstall.pdb
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\obj\Debug\SafeInstall.Properties.Resources.resources
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\obj\Debug\SafeInstall.csproj.GenerateResource.Cache
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\obj\Debug\SafeInstall.exe
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\obj\Debug\SafeInstall.pdb
+c:\users\c\documents\visual studio 2015\Projects\SafeInstall\SafeInstall\obj\Debug\SafeInstall.Form1.resources
