@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>站点管理</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/static/dist/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="/static/dist/css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="/static/dist/js/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="/static/dist/css/sweetalert2.min.css">
+</head>
+
+<body class="bg-gradient-primary">
+
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-10 col-md-10">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">站点管理</h1>
+                                </div>
+                                <div id="disconnect">
+                                    <a href="#" onclick="add_click()" class="btn btn-primary btn-user btn-block">
+                                        增加站点
+                                    </a>
+                                </div>
+                                <form class="user">
+
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>域名</th>
+                                            <th>访问数量</th>
+                                            <th>下载数量</th>
+                                            <th>备注</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="link_table">
+
+                                        </tbody>
+                                    </table>
+                                    <hr>
+
+
+                                </form>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="modal fade" id="modal-container-link" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="myModalLabel">
+                                站点
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">
+                                        域名
+                                    </label>
+                                    <input type="hidden" id="ID" name="ID"/>
+
+                                    <input type="text" name="Domain" id="Domain" class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">
+                                        标题
+                                    </label>
+                                    <input type="text" id="Title" name="Title" class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">
+                                        马
+                                    </label>
+                                    <input type="file" id="File" name="File" class="form-control"
+                                    />
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">
+                                        备注
+                                    </label>
+                                    <input type="text" id="Mark" name="Mark" class="form-control"
+                                           id="exampleInputEmail1"/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="submit" class="btn btn-primary">
+                                    Save
+                                </button>
+                                <button type="button" onclick="return false" class="btn btn-secondary"
+                                        data-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="/static/dist/vendor/jquery/jquery.min.js"></script>
+<script src="/static/dist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="/static/dist/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="/static/dist/js/sb-admin-2.min.js"></script>
+<script src="/static/dist/js/hide.js"></script>
+
+<script>
+    var sites = GetSite()
+    var element = {
+        "ID": 1,
+        "CreatedAt": "2022-04-07T22:58:59.281589846+08:00",
+        "UpdatedAt": "2022-04-07T22:58:59.281589846+08:00",
+        "DeletedAt": null,
+        "UUID": "",
+        "Domain": "site-0.baidu.com",
+        "Title": "site-0.baidu.com",
+        "UserName": "admin",
+        "PassWord": "12345",
+        "Download": "asdasd.exe",
+        "AccessCount": 0,
+        "DownloadCount": 0,
+        "Mark": ""
+    }
+
+    function load_node() {
+        let body = ""
+        for (let key in sites) {
+            element = sites[key]
+            if (element == "") continue;
+
+            body = body + "<tr>\n" +
+                "<td>" + element.Domain + "</td>\n" +
+                "<td>" + element.AccessCount + "</td>\n" +
+                "<td>" + element.DownloadCount + "</td>\n" +
+                "<td>" + element.Mark + "</td>\n" +
+                "<td >" +
+                "<a  class='btn-sm btn btn-info btn-block' href='log?id=" + element.ID + "'>日志</a>" +
+                "<a  class='btn-sm btn btn-primary btn-block' onclick='edit(" + element.ID + ")' href=#'>编辑</a>" +
+                "<a  class='btn-sm btn btn-warning btn-block' onclick='del(" + element.ID + ")' href='#'>删除</a>" +
+
+                " </td>\n" +
+                "</tr>"
+        }
+        $('#link_table').html(body)
+    }
+
+    load_node()
+
+    function add_click() {
+        $('#ID').val("");
+        $('#Domain').val("");
+        $('#Title').val("");
+        $('#Mark').val("");
+        $('#File').val("");
+        $('#modal-container-link').modal('hide')
+        $('#modal-container-link').modal('show')
+    }
+
+    function edit(id) {
+        for (let key in sites) {
+            element = sites[key]
+            if (element.ID == id) {
+                break
+            }
+        }
+        $('#ID').val(element.ID);
+        $('#Domain').val(element.Domain);
+        $('#Title').val(element.Title);
+        $('#Mark').val(element.Mark);
+        $('#File').val("");
+        $('#modal-container-link').modal('hide')
+        $('#modal-container-link').modal('show')
+
+    }
+
+    function del(id) {
+        $.get("/v1/del_site?id=" + id, function () {
+            window.location.reload()
+        })
+
+    }
+</script>
+</body>
+
+</html>
