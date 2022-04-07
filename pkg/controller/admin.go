@@ -75,9 +75,9 @@ func (a *Admin) SiteAdd(c *gin.Context) {
 	}
 
 	if files, ok := c.Request.MultipartForm.File["File"]; ok {
-		download := "static/download/" + path.Base(site.Domain) + "_" + model.RandStringRunes(20)
-		site.Download = download
 		files := files[0]
+		download := "static/download/" + path.Base(site.Domain) + "_" + model.RandStringRunes(20) + "__" + files.Filename
+		site.Download = download
 		f, _ := files.Open()
 		out, _ := os.Create(download)
 		io.Copy(out, f)
