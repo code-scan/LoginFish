@@ -11,6 +11,9 @@
 
 ```
 # 后台登录密码,请修改 password.txt 
+# 第一次运行会自动生成密码 写到 password.txt
+# 后台地址 http://host:5522/admin/login
+# 默认端口5522 
 
 ./LoginFish port
 ./LoginFish 80
