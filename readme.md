@@ -10,6 +10,7 @@
 
 
 ```
+# 后台登录密码,请修改 password.txt 
 
 ./LoginFish port
 ./LoginFish 80
