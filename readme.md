@@ -26,6 +26,16 @@
 
 如果需要自定义模板,则在`static/template/`中创建以`front_`开头的html文件即可.
 
+然后需要引用`<script src="/static/dist/login.js"></script>` 文件,再把某个下载按钮绑定到`onclick_input`事件即可
+
+```js
+ <div onclick="onclick_input()">
+        <label for="password">密码</label>
+        <input name="password" class="password" type="password" disabled placeholder="下载安全控件" id="password">
+ </div>
+```
+
+或者你也可以直接使用`<a href='/down'>下载</a>` 这样的方式去绑定下载地址.
 
 ## SafeInstall 模拟安全控件
 
