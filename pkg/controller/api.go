@@ -3,11 +3,12 @@ package controller
 import (
 	"LoginFish/pkg/config"
 	"LoginFish/pkg/model"
-	"github.com/gin-gonic/gin"
 	"log"
 	"path"
 	"path/filepath"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Api struct {
@@ -82,7 +83,7 @@ func (a *Api) GetLog(c *gin.Context) {
 }
 
 func (a *Api) GetTemplate(c *gin.Context) {
-	templates, _ := filepath.Glob("static/template/front_login*")
+	templates, _ := filepath.Glob("static/template/front_*")
 	for i := range templates {
 		templates[i] = path.Base(templates[i])
 	}

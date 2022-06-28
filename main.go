@@ -42,6 +42,10 @@ func testdata() {
 }
 func main() {
 	//testdata()
+	// if len(os.Args) > 1 && os.Args[1] == "init" {
+	// 	testdata()
+	// 	return
+	// }
 	port := "5522"
 	if len(os.Args) > 1 {
 		port = os.Args[1]
