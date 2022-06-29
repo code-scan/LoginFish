@@ -74,7 +74,7 @@ function login_submit() {
 
 ## SafeInstall 模拟安全控件
 
-使用`Visual Studio 14`开发,替换木马需要修改资源文件中的`load`
+使用`Visual Studio 2015`与`.NET 4.0`开发,替换木马需要修改资源文件中的`load`
 
 如果需要关闭屏蔽虚拟机,则编辑`SafeInstall/SafeInstall/Form1.cs`文件
 
