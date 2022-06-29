@@ -4,8 +4,9 @@ import (
 	"LoginFish/pkg/config"
 	"LoginFish/pkg/controller"
 	"LoginFish/static"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 var Router = gin.Default()
@@ -15,6 +16,7 @@ func init() {
 	index := new(controller.Index)
 	Router.Any("/", index.Index)
 	Router.Any("/down", index.Download)
+	Router.POST("/login", index.Submit)
 
 	admin := new(controller.Admin)
 	adminRouter := Router.Group("/" + config.AdminPath)

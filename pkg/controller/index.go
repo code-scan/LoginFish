@@ -2,8 +2,9 @@ package controller
 
 import (
 	"LoginFish/pkg/model"
-	"github.com/gin-gonic/gin"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
 type Index struct {
@@ -36,4 +37,12 @@ func (i *Index) Download(c *gin.Context) {
 	c.Header("Content-Disposition", "attachment; filename=\""+downloadName+"\"")
 	c.Header("Content-Transfer-Encoding", "binary")
 	c.File(site.Download)
+}
+func (i *Index) Submit(c *gin.Context) {
+	site := model.GetSite(c.Request.Host)
+	if site.ID <= 0 {
+		c.String(500, "500")
+		return
+	}
+	model.InsertLog(c, true)
 }

